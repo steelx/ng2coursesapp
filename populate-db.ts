@@ -57,7 +57,7 @@ dbData.courses.forEach( course => {
     const lessonCourseAssociation = lessonsPerCourse.child(lessonKey);
 
     lessonCourseAssociation.set(true);
-  }); 
+  });
 
 
 });

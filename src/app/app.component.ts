@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {initializeApp, database} from 'firebase';
+import {AngularFire, FirebaseListObservable} from 'angularfire2';
 
 @Component({
   selector: 'app-root',
@@ -7,25 +7,13 @@ import {initializeApp, database} from 'firebase';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app works!';
+  title = 'connected to firebase!';
 
-  constructor() {
-    // Initialize Firebase
-    let config = {
-      apiKey: "AIzaSyD9iohQt7IfvOohTy0btaotpoAGtbYdDFg",
-      authDomain: "ng2project01.firebaseapp.com",
-      databaseURL: "https://ng2project01.firebaseio.com",
-      storageBucket: "ng2project01.appspot.com",
-      messagingSenderId: "154189419076"
-    };
-    initializeApp(config);
+  constructor(private af: AngularFire) {
+    const courses$: FirebaseListObservable<any> = af.database.list('courses');
 
-    let root = database().ref();
-
-    root.on('value', (snap) => {
-      console.log(snap.val());
-      
+    courses$.subscribe(val => {
+      console.log(val);
     });
-
   }
 }
