@@ -1,0 +1,11 @@
+<ul class="list-group">
+  <li class="list-group-item" *ngFor="let lesson of lessons">
+    <div class="col-sm-8">
+      <p>{{lesson.description}}</p>
+    </div>
+    <div class="col-sm-4">
+      <span>{{lesson.duration}}</span>
+    </div>
+    <div class="clearfix"></div>
+  </li>
+</ul>
