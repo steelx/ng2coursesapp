@@ -2,29 +2,17 @@
   <div class="col-sm-6 col-md-12">
     <div class="panel panel-default">
       <div class="panel-heading c-list">
-        <span class="title">Courses</span>
+        <span class="title">Lessons ({{lessons?.length}})</span>
       </div>
 
       <ul class="list-group" id="contact-list">
-        <li class="list-group-item">
-          <div class="col-xs-12 col-sm-9">
-            <h3 class="name">Course 1</h3>
-
-            <span> <span class="text-muted">5842 Goregaon Rd</span><br></span>
-            <span> <span class="text-muted">(870) 288-4149</span><br></span>
-            <span> <span class="text-muted">ajinkya.borade@example.com</span><br></span>
-          </div>
-          <div class="clearfix"></div>
-        </li>
-
-        <li class="list-group-item">
-          <div class="col-xs-12 col-sm-9">
-            <h3 class="name">Course 2</h3>
-
-            <span> <span class="text-muted">22 Goregaon Rd</span><br></span>
-            <span> <span class="text-muted">(870) 288-4149</span><br></span>
-            <span> <span class="text-muted">ajinkya.borade@example.com</span><br></span>
-          </div>
+        <li class="list-group-item" *ngFor="let lesson of lessons">
+            <div class="col-sm-8">
+                <p>{{lesson.description}}</p>
+            </div>
+            <div class="col-sm-4">
+                <span>{{lesson.duration}}</span>
+            </div>
           <div class="clearfix"></div>
         </li>
       </ul>
