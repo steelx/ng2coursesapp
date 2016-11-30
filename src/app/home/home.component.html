@@ -1,11 +1,13 @@
 <div class="row">
-  <div class="col-sm-6 col-md-12">
+  <div class="col-md-12">
     <div class="panel panel-default">
       <div class="panel-heading c-list">
-        <span class="title">Lessons ({{lessons?.length}})</span>
+        <span class="title">Lessons ({{filteredLessons?.length}})</span>
       </div>
-
-        <lessons-list [lessons]="lessons"></lessons-list>
+      <div class="input-group input-group-lg center-block">
+        <input type="text" class="form-control" placeholder="Search" (keyup)="search(input.value)" #input />
+      </div>
+      <lessons-list [lessons]="filteredLessons"></lessons-list>
     </div>
   </div>
 </div>

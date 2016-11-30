@@ -8,13 +8,17 @@ import {Lesson} from "../shared/model/lesson";
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  lessons: Lesson[];
+  allLessons: Lesson[];
+  filteredLessons: Lesson[];
   constructor(private Lessons: LessonsService) { }
 
   ngOnInit() {
     this.Lessons.findAllLessons()
-        .do(console.log)
-        .subscribe(lessons => this.lessons = lessons);
+      .subscribe(lessons => this.allLessons = this.filteredLessons = lessons);
+  }
+
+  search(term: string) {
+    this.filteredLessons = this.allLessons.filter(lesson => lesson.description.toLowerCase().includes(term.toLowerCase()));
   }
 
 }
