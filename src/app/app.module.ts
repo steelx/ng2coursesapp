@@ -12,18 +12,23 @@ import {firebaseConfig} from '../environments/firebase.config';
 import { HomeComponent } from './home/home.component';
 import {LessonsService} from './shared/model/lessons.service';
 import { LessonsListComponent } from './lessons-list/lessons-list.component';
+import { CoursesComponent } from './courses/courses.component';
+import {RouterModule} from "@angular/router";
+import {ROUTES} from "./app.routes";
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    LessonsListComponent
+    LessonsListComponent,
+    CoursesComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    AngularFireModule.initializeApp(firebaseConfig)
+    AngularFireModule.initializeApp(firebaseConfig),
+    RouterModule.forRoot(ROUTES)
   ],
   providers: [LessonsService],
   bootstrap: [AppComponent]
