@@ -15,6 +15,7 @@ import { LessonsListComponent } from './lessons-list/lessons-list.component';
 import { CoursesComponent } from './courses/courses.component';
 import {RouterModule} from "@angular/router";
 import {ROUTES} from "./app.routes";
+import {CoursesService} from "./shared/model/courses.service";
 
 @NgModule({
   declarations: [
@@ -30,7 +31,7 @@ import {ROUTES} from "./app.routes";
     AngularFireModule.initializeApp(firebaseConfig),
     RouterModule.forRoot(ROUTES)
   ],
-  providers: [LessonsService],
+  providers: [LessonsService, CoursesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

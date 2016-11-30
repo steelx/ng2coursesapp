@@ -1,0 +1,14 @@
+<ul class="list-group">
+  <li class="list-group-item" *ngFor="let course of (courses$ | async)">
+    <div class="col-sm-2">
+      <span><img src="{{course.iconUrl}}" height="50" /></span>
+    </div>
+    <div class="col-sm-8">
+      <p>{{course.description}}</p>
+    </div>
+    <div class="col-sm-2">
+      <button>view</button>
+    </div>
+    <div class="clearfix"></div>
+  </li>
+</ul>
