@@ -16,13 +16,17 @@ import { CoursesComponent } from './courses/courses.component';
 import {RouterModule} from "@angular/router";
 import {ROUTES} from "./app.routes";
 import {CoursesService} from "./shared/model/courses.service";
+import { TopMenuComponent } from './top-menu/top-menu.component';
+import { CourseDetailComponent } from './course-detail/course-detail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     LessonsListComponent,
-    CoursesComponent
+    CoursesComponent,
+    TopMenuComponent,
+    CourseDetailComponent
   ],
   imports: [
     BrowserModule,
