@@ -28,10 +28,13 @@ export class CoursesService {
     let course$ = this.findCourseByUrl(courseUrl);
 
     let lessonsPerCourse$ = course$
-      .switchMap(course => this.db.list('lessonsPerCourse/' + course.$key))
-      .do(console.log);
+      .switchMap(course => this.db.list('lessonsPerCourse/' + course.$key));
 
-    lessonsPerCourse$.subscribe();
+    let courseLessons$ = lessonsPerCourse$
+      .map(lspc => lspc.map(lesson => this.db.object('lessons/' + lesson.$key)))
+      .flatMap(fbobs => Observable.combineLatest(fbobs));
+
+    courseLessons$.subscribe();
 
     return Observable.of([]);
   }
