@@ -60,8 +60,20 @@ export class CoursesService {
       }
     });
 
-    return this.findLessonsForLessonKeys(lessonKeys$)
-      .map(lessons => lessons.slice(1, lessons.length));
+    return this.findLessonsForLessonKeys(lessonKeys$);
+    // .map(lessons => lessons.slice(1, lessons.length));
+  }
+
+  loadPreviousPage(courseUrl: string, lessonKey: string, pageSize: number): Observable<Lesson[]> {
+    let lessonKeys$ = this.findLessonKeysForCourse(courseUrl, {
+      query: {
+        orderByKey: true,
+        endAt: lessonKey,
+        limitToLast: pageSize + 1
+      }
+    });
+
+    return this.findLessonsForLessonKeys(lessonKeys$);
   }
 
 }

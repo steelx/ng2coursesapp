@@ -39,7 +39,12 @@ export class CourseDetailComponent implements OnInit {
   }
 
   previous() {
-
+    this.coursesService.loadPreviousPage(
+      this.courseUrl,
+      this.lessons[0].$key,
+      3
+    )
+      .subscribe(lessons => this.lessons = lessons);
   }
 
 }
