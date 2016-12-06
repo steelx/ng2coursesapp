@@ -25,8 +25,10 @@ export class CoursesService {
   }
 
   findLessonKeysForCourse(courseUrl: string, query: FirebaseListFactoryOpts = {}): Observable<string[]> {
+    //having problem here
     return this.findCourseByUrl(courseUrl)
-      .switchMap(course => this.db.list('lessonsPerCourse/' + course.$key, query))
+      .do(val => console.log("course", val))
+      .switchMap(course => this.db.list(`lessonsPerCourse/${course.$key}`, query))
       .map(lspc => lspc.map(lesson => lesson.$key));
   }
 
@@ -41,13 +43,26 @@ export class CoursesService {
   }
 
   loadFirstLessonsPage(courseUrl: string, pageSize: number): Observable<Lesson[]> {
-    let firstPageLessonKeys = this.findLessonKeysForCourse(courseUrl, {
+    let firstPageLessonKeys$ = this.findLessonKeysForCourse(courseUrl, {
       query: {
         limitToFirst: pageSize
       }
     });
 
-    return this.findLessonsForLessonKeys(firstPageLessonKeys);
+    return this.findLessonsForLessonKeys(firstPageLessonKeys$);
+  }
+
+  loadNextPage(courseUrl: string, lessonKey: string, pageSize: number): Observable<Lesson[]> {
+    let lessonKeys$ = this.findLessonKeysForCourse(courseUrl, {
+      query: {
+        orderByKey: true,
+        startAt: lessonKey,
+        limitToFirst: pageSize + 1
+      }
+    });
+
+    return this.findLessonsForLessonKeys(lessonKeys$)
+      .map(lessons => lessons.slice(1, lessons.length));
   }
 
 }

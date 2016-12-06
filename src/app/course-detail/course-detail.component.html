@@ -1,12 +1,4 @@
-<div class="row next-article">
-  <div class="col-sm-6">
-    <button>Previous</button>
-  </div>
-  <div class="col-sm-6">
-    <button class="pull-right">Next</button>
-  </div>
-</div>
-<article class="row">
+<article class="row course-head">
   <div class="col-sm-4">
     <a href="courses/{{(course$ | async)?.url}}" class=""><img src="{{(course$ | async)?.courseListIcon}}" width="250" class="img-responsive" /></a>
   </div>
@@ -19,6 +11,16 @@
 
   </div>
 </article>
-<article class="row">
-  <lessons-list [lessons]="lessons$ | async"></lessons-list>
+
+<div class="row lessons-pagination">
+  <div class="col-sm-6">
+    <button>Previous Lessons</button>
+  </div>
+  <div class="col-sm-6">
+    <button class="pull-right" (click)="next()">Next Lessons</button>
+  </div>
+</div>
+
+<article class="row lessons">
+  <lessons-list *ngIf="lessons" [lessons]="lessons"></lessons-list>
 </article>

@@ -1,7 +1,10 @@
-.next-article {
-    padding: 30px 0;
+.course-head {
+    padding: 20px 0;
+}
+.lessons-pagination {
+
 }
 
-article h3 {
-    margin-top: 0;
+article.lessons {
+    padding: 20px 0;
 }
