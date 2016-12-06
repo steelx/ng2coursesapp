@@ -22,5 +22,5 @@
 </div>
 
 <article class="row lessons">
-  <lessons-list *ngIf="lessons" [lessons]="lessons"></lessons-list>
+  <lessons-list *ngIf="lessons" [lessons]="lessons" (lesson)="navigateToLesson($event)"></lessons-list>
 </article>

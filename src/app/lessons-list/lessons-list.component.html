@@ -1,5 +1,5 @@
 <ul class="list-group">
-  <li class="list-group-item" *ngFor="let lesson of lessons">
+  <li class="list-group-item" *ngFor="let lesson of lessons" (click)="selectLesson(lesson)">
     <div class="col-sm-10">
       <p>{{lesson.description}}</p>
     </div>
