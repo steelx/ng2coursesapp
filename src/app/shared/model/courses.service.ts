@@ -25,9 +25,8 @@ export class CoursesService {
   }
 
   findLessonKeysForCourse(courseUrl: string, query: FirebaseListFactoryOpts = {}): Observable<string[]> {
-    //having problem here
     return this.findCourseByUrl(courseUrl)
-      .do(val => console.log("course", val))
+      .filter(course => !!course)// filters out random undefined data bug
       .switchMap(course => this.db.list(`lessonsPerCourse/${course.$key}`, query))
       .map(lspc => lspc.map(lesson => lesson.$key));
   }
