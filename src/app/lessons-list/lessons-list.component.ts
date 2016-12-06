@@ -10,13 +10,13 @@ export class LessonsListComponent implements OnInit {
   @Input()
   lessons: Lesson[];
 
-  @Output('lesson')
-  lessonEmitter = new EventEmitter<Lesson>();
+  @Output()
+  lesson = new EventEmitter<Lesson>();
 
   constructor() { }
   ngOnInit() { }
 
   selectLesson(lesson: Lesson) {
-    this.lessonEmitter.emit(lesson);
+    this.lesson.emit(lesson);
   }
 }
