@@ -1,16 +1,28 @@
 import { Injectable } from "@angular/core";
-import { AngularFire } from "angularfire2";
+import {AngularFireDatabase} from "angularfire2";
 import {Observable} from "rxjs";
 import {Lesson} from "./lesson";
+import {FirebaseListFactoryOpts} from "angularfire2/interfaces";
 
 @Injectable()
 export class LessonsService {
 
-  constructor(private af: AngularFire) { }
+  constructor(private database: AngularFireDatabase) { }
 
-  findAllLessons(): Observable<Lesson[]> {
-    return this.af.database.list('lessons')
+  findAllLessons(query: FirebaseListFactoryOpts = {}): Observable<Lesson[]> {
+    return this.database.list('lessons', query)
         .map(Lesson.fromJsonList);
+  }
+
+  findLessonByUrl(lessonUrl: string): Observable<Lesson> {
+    return this.findAllLessons({
+      query: {
+        orderByChild: 'url',
+        equalTo: lessonUrl
+      }
+    })
+      .map(results => results[0])
+      .do(console.log);
   }
 
 }
