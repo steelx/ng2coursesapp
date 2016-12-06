@@ -1,6 +1,5 @@
-import {Component, OnInit, Input, Output} from '@angular/core';
+import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import {Lesson} from "../shared/model/lesson";
-import {EventEmitter} from "events";
 
 @Component({
   selector: 'lessons-list',
