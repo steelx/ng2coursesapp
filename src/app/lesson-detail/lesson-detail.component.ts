@@ -17,8 +17,11 @@ export class LessonDetailComponent implements OnInit {
               private lessonsService: LessonsService) {}
 
   ngOnInit() {
-    this.lessonUrl = this.route.snapshot.params['id'];
-    const lesson$ = this.lessonsService.findLessonByUrl(this.lessonUrl);
+
+    const lesson$ = this.route.params.switchMap(params => {
+      let lessonUrl = params['id'];
+      return this.lessonsService.findLessonByUrl(lessonUrl);
+    });
     lesson$.subscribe(result => this.lesson = result);
   }
 
