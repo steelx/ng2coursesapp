@@ -21,8 +21,7 @@ export class LessonsService {
         equalTo: lessonUrl
       }
     })
-      .map(results => results[0])
-      .do(console.log);
+      .map(results => Lesson.fromJson(results[0]));
   }
 
 }

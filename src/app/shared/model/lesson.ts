@@ -2,8 +2,8 @@ export class Lesson {
   static fromJsonList(array): Lesson[] {
     return array.map(Lesson.fromJson);
   }
-  static fromJson({$key, description, duration, url, tags, pro, longDescription, courseId}): Lesson {
-    return new Lesson($key, description, duration, url, tags, pro, longDescription, courseId);
+  static fromJson({$key, description, duration, url, tags, pro, longDescription, courseId, videoUrl}): Lesson {
+    return new Lesson($key, description, duration, url, tags, pro, longDescription, courseId, videoUrl);
   }
 
   constructor(
@@ -14,7 +14,8 @@ export class Lesson {
     public tags: string,
     public pro: string,
     public longDescription: string,
-    public courseId: string
+    public courseId: string,
+    public videoUrl: string
   ){}
 
   get isBeginner() {

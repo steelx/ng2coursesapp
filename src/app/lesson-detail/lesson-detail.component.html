@@ -7,7 +7,7 @@
   <!-- YOUTUBE VIDEO RESPONSIVE-->
   <div class="well col-md-12 block-center">
     <div class="flex-video widescreen">
-      <iframe allowfullscreen="true" src="http://www.youtube.com/embed/_KIOpe7f32s" frameborder="0">
+      <iframe *ngIf="lesson?.videoUrl" allowfullscreen="true" [src]="lesson.videoUrl | safeUrl" frameborder="0">
       </iframe>
     </div>
   </div>
