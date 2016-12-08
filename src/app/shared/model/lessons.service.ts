@@ -21,7 +21,8 @@ export class LessonsService {
         equalTo: lessonUrl
       }
     })
-      .map(results => Lesson.fromJson(results[0]));
+      .filter(lessons => lessons && lessons.length > 0)// Hot fix for undefined $key
+      .map(lessons => Lesson.fromJson(lessons[0]));
   }
 
   loadNextLesson(courseId: string, lessonId: string): Observable<Lesson> {
@@ -31,7 +32,9 @@ export class LessonsService {
         startAt: lessonId,
         limitToFirst: 2
       }
-    }).map(lessons => lessons[1].$key)
+    })
+      .filter(lessons => lessons && lessons.length > 0)
+      .map(lessons => lessons[1].$key)
       .switchMap(lessonKey => this.database.object(`lessons/${lessonKey}`))
       .map(Lesson.fromJson);
   }
@@ -43,7 +46,9 @@ export class LessonsService {
         endAt: lessonId,
         limitToLast: 2
       }
-    }).map(lessons => lessons[0].$key)
+    })
+      .filter(lessons => lessons && lessons.length > 0)
+      .map(lessons => lessons[0].$key)
       .switchMap(lessonKey => this.database.object(`lessons/${lessonKey}`))
       .map(Lesson.fromJson);
   }
