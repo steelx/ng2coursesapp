@@ -24,3 +24,9 @@
 <article class="row lessons">
   <lessons-list *ngIf="lessons" [lessons]="lessons" (lesson)="navigateToLesson($event)"></lessons-list>
 </article>
+
+<div class="row lessons-pagination">
+  <div class="col-sm-6 col-sm-offset-6">
+    <button class="pull-right" routerLink="new" [queryParams]="{courseId: (course$ | async)?.$key}">Add New Lesson</button>
+  </div>
+</div>

@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import {ReactiveFormsModule} from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import 'rxjs/add/operator/map';
@@ -20,6 +20,7 @@ import { TopMenuComponent } from './top-menu/top-menu.component';
 import { CourseDetailComponent } from './course-detail/course-detail.component';
 import { LessonDetailComponent } from './lesson-detail/lesson-detail.component';
 import { SafeUrlPipe } from './shared/security/safe-url.pipe';
+import { NewLessonComponent } from './new-lesson/new-lesson.component';
 
 @NgModule({
   declarations: [
@@ -30,14 +31,15 @@ import { SafeUrlPipe } from './shared/security/safe-url.pipe';
     TopMenuComponent,
     CourseDetailComponent,
     LessonDetailComponent,
-    SafeUrlPipe
+    SafeUrlPipe,
+    NewLessonComponent
   ],
   imports: [
     BrowserModule,
-    FormsModule,
     HttpModule,
     AngularFireModule.initializeApp(firebaseConfig),
-    RouterModule.forRoot(ROUTES)
+    RouterModule.forRoot(ROUTES),
+    ReactiveFormsModule
   ],
   providers: [LessonsService, CoursesService],
   bootstrap: [AppComponent]
