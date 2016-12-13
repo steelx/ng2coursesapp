@@ -8,16 +8,23 @@ import {LessonsService} from "../shared/model/lessons.service";
   styleUrls: ['./new-lesson.component.css']
 })
 export class NewLessonComponent implements OnInit {
-
+  courseId: string;
   constructor(private route: ActivatedRoute, private lessonService: LessonsService) { }
 
   ngOnInit() {
-    let courseId = this.route.snapshot.queryParams['courseId'];
-    console.log(courseId);
+    this.courseId = this.route.snapshot.queryParams['courseId'];
+    console.log('courseId : ', this.courseId);
   }
 
   save(form) {
-    console.log(form);
+    this.lessonService.createNewLesson(this.courseId, form.value)
+      .subscribe(
+        success => {
+          alert('New lesson saved successfully');
+          form.reset();
+        },
+        error => alert(`Error creating new Lesson ${error}`)
+      );
   }
 
 }
