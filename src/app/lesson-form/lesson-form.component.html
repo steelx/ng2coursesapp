@@ -1,0 +1,43 @@
+<div class="panel-body">
+  <form ngNoForm [formGroup]="form" class="form-horizontal" autocomplete="off" novalidate>
+    <fieldset class="form-group">
+      <label class="col-sm-3 control-label">Description:</label>
+      <div class="col-sm-9">
+        <input class="form-control" type="text" formControlName="description" />
+        <span class="field-error-message" *ngIf="isErrorVisible('description', 'required')">required</span>
+      </div>
+    </fieldset>
+
+    <fieldset class="form-group">
+      <label class="col-sm-3 control-label">Lesson URL:</label>
+      <div class="col-sm-9">
+        <input class="form-control" type="text" formControlName="url" />
+        <span class="field-error-message" *ngIf="isErrorVisible('url', 'required')">required</span>
+      </div>
+    </fieldset>
+
+    <fieldset class="form-group">
+      <label class="col-sm-3 control-label">Video URL:</label>
+      <div class="col-sm-9">
+        <input class="form-control" type="text" formControlName="videoUrl" placeholder="http://youtube.com/xyz" />
+        <span class="field-error-message" *ngIf="isErrorVisible('videoUrl', 'required')">required</span>
+        <span class="field-error-message" *ngIf="isErrorVisible('videoUrl', 'validUrl')">not a valid video URL</span>
+      </div>
+    </fieldset>
+
+    <fieldset class="form-group">
+      <label class="col-sm-3 control-label">TAGS:</label>
+      <div class="col-sm-9">
+        <input class="form-control" type="text" formControlName="tags" />
+        <span class="field-error-message" *ngIf="isErrorVisible('tags', 'required')">required</span>
+      </div>
+    </fieldset>
+
+    <fieldset class="form-group">
+      <label class="col-sm-3 control-label">Long Description:</label>
+      <div class="col-sm-9">
+        <textarea class="form-control" formControlName="longDescription"></textarea>
+      </div>
+    </fieldset>
+  </form>
+</div>

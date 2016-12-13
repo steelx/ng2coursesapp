@@ -21,6 +21,7 @@ import { CourseDetailComponent } from './course-detail/course-detail.component';
 import { LessonDetailComponent } from './lesson-detail/lesson-detail.component';
 import { SafeUrlPipe } from './shared/security/safe-url.pipe';
 import { NewLessonComponent } from './new-lesson/new-lesson.component';
+import { LessonFormComponent } from './lesson-form/lesson-form.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { NewLessonComponent } from './new-lesson/new-lesson.component';
     CourseDetailComponent,
     LessonDetailComponent,
     SafeUrlPipe,
-    NewLessonComponent
+    NewLessonComponent,
+    LessonFormComponent
   ],
   imports: [
     BrowserModule,

@@ -16,4 +16,8 @@ export class NewLessonComponent implements OnInit {
     console.log(courseId);
   }
 
+  save(form) {
+    console.log(form);
+  }
+
 }
