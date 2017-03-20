@@ -1,4 +1,3 @@
-
 import {AuthMethods, AuthProviders} from "angularfire2";
 
 export const firebaseConfig = {
@@ -8,8 +7,6 @@ export const firebaseConfig = {
     storageBucket: "ng2project01.appspot.com",
     messagingSenderId: "154189419076"
 };
-
-
 
 export const authConfig = {
     provider: AuthProviders.Password,
